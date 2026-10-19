@@ -1,0 +1,79 @@
+{
+  "acbom_digest": "sha256:3ce6033a5b0a04964b6e8c7ba7d70d49f757748263f68cdbcc0b6c0270b0e23f",
+  "acbom_schema_version": "1.1.0",
+  "digest": "sha256:5eff085021fa930e3cac114a9a4f11575ab5e3e5a7a5cd7e626b503bda2d2fb8",
+  "effective_authority": [
+    {
+      "action": "invokes",
+      "agent_id": "clp:agent:sha256:2321fe51daefbeccc66dac2ae3e63aa0237216db27510216a9f61c3faf760cf9",
+      "confidence": "unknown",
+      "evidence": [
+        {
+          "adapter": "a2a",
+          "document_digest": null,
+          "line_end": null,
+          "line_start": null,
+          "parser": null,
+          "path": "agent-card.json",
+          "schema_id": null
+        }
+      ],
+      "permitting_identity_id": null,
+      "resource_id": "clp:tool:sha256:160b00a25312e00069419807a1d7318a622b51bd410099ae2520be34af6bfc0e",
+      "schema_version": "1.0.0"
+    },
+    {
+      "action": "invokes",
+      "agent_id": "clp:agent:sha256:2321fe51daefbeccc66dac2ae3e63aa0237216db27510216a9f61c3faf760cf9",
+      "confidence": "unknown",
+      "evidence": [
+        {
+          "adapter": "a2a",
+          "document_digest": null,
+          "line_end": null,
+          "line_start": null,
+          "parser": null,
+          "path": "agent-card.json",
+          "schema_id": null
+        }
+      ],
+      "permitting_identity_id": null,
+      "resource_id": "clp:tool:sha256:79e683755177698c191421e090a68ed7437218b0a3e911747618bb019fd23ce7",
+      "schema_version": "1.0.0"
+    },
+    {
+      "action": "invokes",
+      "agent_id": "clp:agent:sha256:2321fe51daefbeccc66dac2ae3e63aa0237216db27510216a9f61c3faf760cf9",
+      "confidence": "unknown",
+      "evidence": [
+        {
+          "adapter": "a2a",
+          "document_digest": null,
+          "line_end": null,
+          "line_start": null,
+          "parser": null,
+          "path": "agent-card.json",
+          "schema_id": null
+        }
+      ],
+      "permitting_identity_id": null,
+      "resource_id": "clp:tool:sha256:826b914e015176bfef3b8b570cb99ad8101688d3e27982854e5af2a27aee4c7d",
+      "schema_version": "1.0.0"
+    }
+  ],
+  "generator": {
+    "name": "controlloop",
+    "version": "0.1.0"
+  },
+  "provenance": {
+    "approved_at": "2026-08-24T00:00:00Z",
+    "approved_commit": null,
+    "approver": "controlloop-security (maintainer)",
+    "approver_source": "supplied"
+  },
+  "repository": {
+    "commit": "c2ecdf936a9f7fff28a1208ffd028bcd150aa2ca",
+    "root_digest": "sha256:4f1f7910bcdab04cc283a3d4a4b0bf2cf1d164533e3ee65f89c15abfbdc2ffdf"
+  },
+  "schema_version": "1.1.0"
+}
