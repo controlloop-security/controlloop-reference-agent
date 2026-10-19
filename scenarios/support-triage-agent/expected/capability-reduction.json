@@ -1,0 +1,22 @@
+{
+  "_comment": [
+    "Committed expectations, asserted by",
+    "the reference-scenario workflow. Every value was produced by a real",
+    "`controlloop gate` run against this branch, never hand-written.",
+    "",
+    "Naming a reduced capability by material class needs a",
+    "MaterialChangeSummary, which needs both graphs, which needs the",
+    "merge-base path. That is why this scenario's base carries no committed",
+    "baseline."
+  ],
+  "reduction_run": {
+    "manifest": "controlloop.yaml",
+    "verdict": "passed",
+    "gate_exit_code": 0,
+    "suppressed_pattern_rules": [],
+    "blast_radius": {
+      "material_class": "sensitive-data-access",
+      "target_name": "Read a customer record"
+    }
+  }
+}
