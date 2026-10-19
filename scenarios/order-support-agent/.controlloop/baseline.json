@@ -1,7 +1,7 @@
 {
   "acbom_digest": "sha256:3ce6033a5b0a04964b6e8c7ba7d70d49f757748263f68cdbcc0b6c0270b0e23f",
   "acbom_schema_version": "1.1.0",
-  "digest": "sha256:5eff085021fa930e3cac114a9a4f11575ab5e3e5a7a5cd7e626b503bda2d2fb8",
+  "digest": "sha256:9662abec1f693ea19e642f4c717a4267955304f497ba184bbaef55365047bc95",
   "effective_authority": [
     {
       "action": "invokes",
@@ -67,7 +67,7 @@
   },
   "provenance": {
     "approved_at": "2026-08-24T00:00:00Z",
-    "approved_commit": null,
+    "approved_commit": "2519b59e799973c598014878007c11d54203188c",
     "approver": "controlloop-security (maintainer)",
     "approver_source": "supplied"
   },
