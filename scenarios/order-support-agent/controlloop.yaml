@@ -1,4 +1,4 @@
-schema_version: "1.1.0"
+schema_version: "1.3.0"
 owner: support-eng
 trust_boundaries:
   - name: order-support-boundary
@@ -52,3 +52,12 @@ tool_capabilities:
   - tool: Reply to customer
     external_communication: true
     read_only: false
+
+# Where the agent's input comes from. Support asked for tickets to reach
+# the agent directly from the public inbox instead of being pasted in by
+# a person. Nothing in the repository could state this before: an agent
+# card says what the agent can do, not who can talk to it.
+external_inputs:
+  - agent: widgetworks-order-support-agent
+    source: customer support inbox
+    description: Tickets anyone on the internet can open by emailing support@widgetworks.example.

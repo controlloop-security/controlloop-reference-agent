@@ -1,0 +1,64 @@
+{
+  "_comment": [
+    "Committed expectations, asserted by",
+    "ControlLoop's reference-scenario workflow. Every value was produced by",
+    "a real `controlloop scan --format json` run against this scenario, never",
+    "hand-written."
+  ],
+  "blocking_run": {
+    "manifest": "controlloop.yaml",
+    "verdict": "deployment_blocked",
+    "gate_exit_code": 1,
+    "blast_radius": {
+      "schema_version": "1.0.0",
+      "material_class": "financial-action",
+      "agent_id": "clp:agent:sha256:2321fe51daefbeccc66dac2ae3e63aa0237216db27510216a9f61c3faf760cf9",
+      "agent_name": "widgetworks-order-support-agent",
+      "action": "invokes",
+      "target_id": "clp:tool:sha256:160b00a25312e00069419807a1d7318a622b51bd410099ae2520be34af6bfc0e",
+      "target_name": "Issue a refund",
+      "permitting_identity_id": null,
+      "permitting_identity_name": null,
+      "transitive": false,
+      "path": [],
+      "incomplete": false
+    },
+    "ceiling_finding": {
+      "rule_id": "policy.exfiltration-triangle",
+      "id": "clp:finding:sha256:c52bb2a0f1fb8aea07400e2c481c5f055bc178f462ab43a59ae964cf47556084",
+      "severity": "critical",
+      "confidence": "high",
+      "message": "Agent forms an exfiltration triangle, combining all three legs: sensitive-data-access to 'Issue a refund' (direct), untrusted-input from 'customer support inbox' (direct, receives-from), and external-communication to 'Reply to customer' (direct).",
+      "capability_path": {
+        "schema_version": "1.0.0",
+        "agent_id": "clp:agent:sha256:2321fe51daefbeccc66dac2ae3e63aa0237216db27510216a9f61c3faf760cf9",
+        "target_id": "clp:tool:sha256:79e683755177698c191421e090a68ed7437218b0a3e911747618bb019fd23ce7",
+        "target_type": "tool",
+        "hops": [
+          {
+            "edge_id": "clp:edge:sha256:71cd1d5cedf57a2d3ca90cf3229d143e87b8d47bbd269ab9b5fab95495fe65c9",
+            "edge_type": "invokes",
+            "source_id": "clp:agent:sha256:2321fe51daefbeccc66dac2ae3e63aa0237216db27510216a9f61c3faf760cf9",
+            "target_id": "clp:tool:sha256:79e683755177698c191421e090a68ed7437218b0a3e911747618bb019fd23ce7",
+            "evidence": [
+              {
+                "adapter": "a2a",
+                "path": "agent-card.json",
+                "line_start": null,
+                "line_end": null,
+                "parser": null,
+                "schema_id": null,
+                "document_digest": null
+              }
+            ]
+          }
+        ],
+        "confidence": "high"
+      }
+    },
+    "suppressed_pattern_rules": [
+      "policy.undeclared-tools"
+    ],
+    "suppression_count": 0
+  }
+}
