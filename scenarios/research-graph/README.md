@@ -45,12 +45,16 @@ classifies as `UNCLASSIFIED`, the worst material class:
 ## It is not dirty on purpose
 
 The manifest is complete: every tool approved by a named human, every
-privileged tool given an audit path. **Zero policy rules fire.**
+privileged tool given an audit path. **No rule about the manifest
+fires.** The one finding is the gap itself:
 
 ```
 $ controlloop gate .
 ! PASSED WITH WARNINGS
-• no findings
+! MEDIUM   policy.unresolved-dynamic-registration:
+  'unresolved-tools:research-graph' is registered dynamically and could not be
+  resolved statically; ControlLoop cannot enumerate what this code registers
+    at graph.py:36
 $ echo $?
 0
 
@@ -60,7 +64,7 @@ $ echo $?
 3
 ```
 
-A spotless manifest and no findings does not mean safe. It means nothing
+A spotless manifest and a passing gate do not mean safe. They mean nothing
 *known* is wrong. What remains is what nobody could read.
 
 ## Privacy note

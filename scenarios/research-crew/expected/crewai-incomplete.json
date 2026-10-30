@@ -5,17 +5,20 @@
     "`controlloop gate` run against this scenario, never hand-written.",
     "",
     "The point of this scenario: the manifest approves every tool and",
-    "declares every delegation, so ZERO policy rules fire. The crew still",
-    "cannot claim safety, because one agent's tools cannot be read",
-    "statically. That unresolved capability is unclassified, which the",
-    "material taxonomy ranks worst of all, so it becomes the worst",
-    "reachable capability -- reached transitively, through delegation."
+    "declares every delegation, so no rule about the manifest fires. The one",
+    "finding is policy.unresolved-dynamic-registration (medium), naming the",
+    "publisher's tool list that cannot be read statically. That unresolved",
+    "capability is unclassified, which the material taxonomy ranks worst of",
+    "all, so it becomes the worst reachable capability -- reached",
+    "transitively, through delegation."
   ],
   "warn_run": {
     "manifest": "controlloop.yaml",
     "verdict": "passed_with_warnings",
     "gate_exit_code": 0,
-    "suppressed_pattern_rules": [],
+    "suppressed_pattern_rules": [
+      "policy.unresolved-dynamic-registration"
+    ],
     "blast_radius": {
       "material_class": "unclassified",
       "target_name": "unresolved-tools:publisher"

@@ -34,7 +34,10 @@ With `Router` present, the headline is:
 ```
 ! WORST REACHABLE  unclassified: Router can invoke unresolved-tools:Router
 ! PASSED WITH WARNINGS
-• no findings
+! MEDIUM   policy.unresolved-dynamic-registration: 'unresolved-tools:Router' is
+  registered dynamically and could not be resolved statically; ControlLoop
+  cannot enumerate what this code registers
+    at desk.py:64
 exit 0
 ```
 
@@ -77,7 +80,8 @@ agent and returns. ControlLoop models them as `delegates-to` and
 ## It is not dirty on purpose
 
 Every tool is approved, every privileged tool audited, every delegation
-declared. **Zero policy rules fire**, and the scan still cannot claim
+declared. **No rule about the manifest fires**; the one finding names the
+tool list it could not read, and the scan still cannot claim
 safety — because one agent's tools could not be read.
 
 ## Files

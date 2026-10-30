@@ -14,7 +14,9 @@
     "manifest": "controlloop.yaml",
     "verdict": "passed_with_warnings",
     "gate_exit_code": 0,
-    "suppressed_pattern_rules": [],
+    "suppressed_pattern_rules": [
+      "policy.unresolved-dynamic-registration"
+    ],
     "blast_radius": {
       "material_class": "unclassified",
       "target_name": "unresolved-tools:Router"

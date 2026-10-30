@@ -45,7 +45,7 @@ directory, not at the repository root.
 | --- | --- |
 | [`scenarios/order-support-agent/`](scenarios/order-support-agent/) | The base "currently approved" support agent, runnable with `uv run order-support`. See [`SCAN.md`](scenarios/order-support-agent/SCAN.md) for a walkthrough with real output |
 | [`scenarios/support-triage-agent/`](scenarios/support-triage-agent/) | The base for a capability reduction: a gate that passes while naming what was given up |
-| [`scenarios/research-crew/`](scenarios/research-crew/) | A CrewAI crew whose publishing agent builds its tool list at runtime: zero findings, and still not safe |
+| [`scenarios/research-crew/`](scenarios/research-crew/) | A CrewAI crew whose publishing agent builds its tool list at runtime: a clean manifest, one finding for the unreadable tool list, and still not safe |
 | [`scenarios/research-graph/`](scenarios/research-graph/) | A LangGraph graph with a runtime router and an unreadable publish step |
 | [`scenarios/support-desk/`](scenarios/support-desk/) | An OpenAI Agents SDK desk where a customer-facing agent reaches a refund in three handoffs |
 | [`scenarios/storefront-agent-config/`](scenarios/storefront-agent-config/) | Coding-agent configuration (Claude Code settings, hooks, MCP servers, plugins, an agent-running workflow) and the approved-components list |
