@@ -5,15 +5,18 @@
     "run against this scenario, never hand-written.",
     "",
     "The manifest approves every tool and declares every audit path, so no",
-    "policy rule fires. The graph still cannot claim safety: the publish",
-    "step builds its tools at runtime, and an unreadable capability is",
-    "unclassified -- the worst material class there is."
+    "rule about the manifest fires. The one finding is",
+    "policy.unresolved-dynamic-registration (medium): the publish step builds",
+    "its tools at runtime, and an unreadable capability is unclassified --",
+    "the worst material class there is."
   ],
   "warn_run": {
     "manifest": "controlloop.yaml",
     "verdict": "passed_with_warnings",
     "gate_exit_code": 0,
-    "suppressed_pattern_rules": [],
+    "suppressed_pattern_rules": [
+      "policy.unresolved-dynamic-registration"
+    ],
     "blast_radius": {
       "material_class": "unclassified",
       "target_name": "unresolved-tools:research-graph"

@@ -44,7 +44,8 @@ you.
 
 Unlike `order-support-agent`, this scenario's manifest is **complete**:
 every tool approved by a named human, every delegation declared, every
-privileged tool given an audit path. **Zero policy rules fire.**
+privileged tool given an audit path. **No rule about the manifest
+fires.** The one finding is the gap itself:
 
 ```
 $ controlloop gate .
@@ -53,14 +54,17 @@ $ controlloop gate .
 
 ! PASSED WITH WARNINGS
 
-• no findings
+! MEDIUM   policy.unresolved-dynamic-registration: 'unresolved-tools:publisher'
+  is registered dynamically and could not be resolved statically; ControlLoop
+  cannot enumerate what this code registers
+    at src/research_crew/crew.py:39
 
 $ echo $?
 0
 ```
 
-That is the lesson. A spotless manifest and no findings still does not
-mean the crew is safe — it means nothing *known* is wrong. What remains
+That is the lesson. A spotless manifest and a passing gate still do not
+mean the crew is safe — they mean nothing *known* is wrong. What remains
 is what nobody could read.
 
 Turn on completeness enforcement, which is what a team gating a real
