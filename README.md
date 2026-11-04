@@ -48,7 +48,7 @@ directory, not at the repository root.
 | [`scenarios/research-crew/`](scenarios/research-crew/) | A CrewAI crew whose publishing agent builds its tool list at runtime: a clean manifest, one finding for the unreadable tool list, and still not safe |
 | [`scenarios/research-graph/`](scenarios/research-graph/) | A LangGraph graph with a runtime router and an unreadable publish step |
 | [`scenarios/support-desk/`](scenarios/support-desk/) | An OpenAI Agents SDK desk where a customer-facing agent reaches a refund in three handoffs |
-| [`scenarios/storefront-agent-config/`](scenarios/storefront-agent-config/) | Coding-agent configuration (Claude Code settings, hooks, MCP servers, plugins, an agent-running workflow) and the approved-components list |
+| [`scenarios/storefront-agent-config/`](scenarios/storefront-agent-config/) | Coding-agent configuration (Claude Code settings, hooks, MCP servers, plugins, an agent-running workflow), a pre-commit config, and the approved-components list |
 
 | Branch | The change | Result |
 | --- | --- | --- |
@@ -60,6 +60,8 @@ directory, not at the repository root.
 | `scenario/allow-list-widened` | `Bash(npm test)` becomes `Bash(*)` | Blocked |
 | `scenario/agent-workflow-id-token` | The review workflow gets `id-token: write` and skips permission prompts | Blocked |
 | `scenario/pinned-plugin-added` | A plugin from the pinned marketplace is enabled | Passes |
+| `scenario/devcontainer-extension-added` | A dev container auto-installs an unpinned extension and runs a `postCreateCommand` | Blocked |
+| `scenario/pre-commit-rev-moved` | A pre-commit hook repository's `rev` moves from a commit SHA to a tag | Passes with a medium finding; blocks at `severity_threshold = "medium"` |
 | `scenario/team-sanctioned-grant` | A Team gate: an MCP server the organization approved | Passes |
 | `scenario/team-unsanctioned-grant` | A Team gate: an MCP server running a lookalike package | Review required |
 | `scenario/team-no-published-bundle` | A Team gate with no published policy bundle | Passes, with both grants unevaluated |
