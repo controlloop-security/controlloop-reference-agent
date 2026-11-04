@@ -1,0 +1,25 @@
+{
+  "_comment": [
+    "Committed expectations, asserted by",
+    "the reference-scenario workflow. Every value was produced by a real",
+    "`controlloop gate` run against this branch, never hand-written.",
+    "",
+    "A dev container that auto-installs an unpinned editor extension and runs node .devcontainer/post-create.js after it is created, the install-on-open pattern of a poisoned marketplace extension. The extension is fictional and the script is inert."
+  ],
+  "blocking_run": {
+    "verdict": "deployment_blocked",
+    "gate_exit_code": 1,
+    "rules_fired": [
+      "policy.agent-hook-command-change",
+      "policy.unpinned-agent-component"
+    ],
+    "authority_statements": [
+      "This change gives Dev Containers the power to install plugin `editor extension widgetworks-example.storefront-tools`, unpinned (`.devcontainer/devcontainer.json`, plugin `editor extension widgetworks-example.storefront-tools`). No approval is recorded.",
+      "This change gives Dev Containers the power to run `node .devcontainer/post-create.js` through the `postCreateCommand` setting (`.devcontainer/devcontainer.json`, setting `postCreateCommand`). No approval is recorded."
+    ],
+    "blast_radius": {
+      "material_class": "unclassified",
+      "target_name": "editor extension widgetworks-example.storefront-tools"
+    }
+  }
+}
