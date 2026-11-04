@@ -1,8 +1,10 @@
 # Storefront agent configuration
 
-A fictional storefront ("Widgetworks") whose coding agents are configured
-the way a careful team would configure them. It demonstrates ControlLoop's
-agent authority diff.
+A fictional storefront ("Widgetworks") whose coding agents, dev container
+and pre-commit hooks are configured the way a careful team would configure
+them. It demonstrates ControlLoop's agent authority diff, and Clone-time
+protection: the files that install tools and run scripts every time the
+repository is opened or committed to.
 
 On `main` it is the approved starting point:
 
@@ -11,6 +13,7 @@ On `main` it is the approved starting point:
 | `.claude/settings.json` | A Prettier hook after edits, `Bash(npm test)` without asking, `Read(./.env)` denied, and a marketplace pinned to a commit |
 | `.mcp.json` | One MCP server, `catalog-docs`, pinned to version `1.4.2` |
 | `.github/workflows/claude-review.yml` | A review workflow with a read-only token |
+| `.pre-commit-config.yaml` | One hook repository, `widgetworks-example/storefront-hooks`, pinned to a full commit SHA |
 
 Each scenario branch changes one thing, the way a real pull request would:
 
@@ -21,6 +24,31 @@ Each scenario branch changes one thing, the way a real pull request would:
 | `scenario/allow-list-widened` | `Bash(npm test)` becomes `Bash(*)` | A one-line change that hands the agent every shell command |
 | `scenario/agent-workflow-id-token` | The review workflow gets `id-token: write` and `--dangerously-skip-permissions` | An agent that can mint cloud credentials and never asks |
 | `scenario/pinned-plugin-added` | A plugin from the pinned marketplace is enabled | A benign change that must not fail |
+| `scenario/devcontainer-extension-added` | A new `.devcontainer/devcontainer.json` auto-installs the extension `widgetworks-example.storefront-tools` with no `@version`, and runs `node .devcontainer/post-create.js` as its `postCreateCommand` | A poisoned marketplace extension, or a setup step, that installs and runs on every machine that opens the repository |
+| `scenario/pre-commit-rev-moved` | The hook repository's `rev` moves from a full commit SHA to the tag `v2.4.0` | Hook code that can change upstream, then run on every commit, with no change in this repository |
+
+## Clone-time scenarios: what the gate says
+
+Both were run with ControlLoop 0.7.1 (`controlloop gate
+scenarios/storefront-agent-config --default-branch main`):
+
+- `scenario/devcontainer-extension-added` is **blocked** (exit `1`) by
+  `policy.agent-hook-command-change` at `high`: "Added: Setting
+  'postCreateCommand' for host 'Dev Containers' runs `node
+  .devcontainer/post-create.js`." The unpinned extension is reported by
+  `policy.unpinned-agent-component` at `medium`: "Added: Editor extension
+  widgetworks-example.storefront-tools (editor-extension) has no commit or
+  digest pin."
+- `scenario/pre-commit-rev-moved` **passes** (exit `0`) at the default
+  `high` threshold, with one `policy.unpinned-agent-component` finding at
+  `medium` naming the hook repository and saying it has no commit or digest
+  pin. That rule reports a changed pin or source at `medium`, so a
+  repository that sets `severity_threshold = "medium"` in
+  `controlloop.toml` blocks this change (checked with the same version).
+
+The pre-commit branch starts from the commit on `main` that adds the
+SHA-pinned `.pre-commit-config.yaml`, so the gate sees the `rev` move
+rather than a new file.
 
 ## The Team scenarios: an approved-components list
 
@@ -64,6 +92,11 @@ reachable endpoint.
   names a secret without holding one.
 - `widgetworks-example/claude-plugins` is a fictional repository and the
   commit it is pinned to is made up.
+- `widgetworks-example/storefront-hooks` and its commit and tag, and the
+  extension `widgetworks-example.storefront-tools`, are fictional. Nothing
+  here installs them.
+- `.devcontainer/post-create.js` on the dev container branch does nothing
+  and exits.
 
 ## Expectations
 
