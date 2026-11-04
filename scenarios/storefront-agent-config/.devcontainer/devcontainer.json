@@ -1,0 +1,10 @@
+{
+  "name": "Widgetworks storefront",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm",
+  "customizations": {
+    "vscode": {
+      "extensions": ["widgetworks-example.storefront-tools"]
+    }
+  },
+  "postCreateCommand": "node .devcontainer/post-create.js"
+}
