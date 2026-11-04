@@ -3,6 +3,6 @@
 # without a change to this file.
 repos:
   - repo: https://github.com/widgetworks-example/storefront-hooks
-    rev: 8f3c2a9d41b7e6c05d9a1f2e3b4c5d6e7f809a1b
+    rev: v2.4.0
     hooks:
       - id: check-catalog-json

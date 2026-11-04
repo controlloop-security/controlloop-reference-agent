@@ -1,0 +1,23 @@
+{
+  "_comment": [
+    "Committed expectations, asserted by",
+    "the reference-scenario workflow. Every value was produced by a real",
+    "`controlloop gate` run against this branch, never hand-written.",
+    "",
+    "A pre-commit hook repository's rev moves from a full commit SHA to a tag, so the hook code can change upstream with no change here. At the default high threshold the gate passes and reports the unpinned repository at medium; a repository with severity_threshold medium blocks it. The hook repository is fictional."
+  ],
+  "pass_run": {
+    "verdict": "passed",
+    "gate_exit_code": 0,
+    "rules_fired": [
+      "policy.unpinned-agent-component"
+    ],
+    "authority_statements": [
+      "This change gives pre-commit the power to install plugin `pre-commit hook repository github.com/widgetworks-example/storefront-hooks`, unpinned, whose source changed (`.pre-commit-config.yaml`, plugin `pre-commit hook repository github.com/widgetworks-example/storefront-hooks`). No approval is recorded."
+    ],
+    "blast_radius": {
+      "material_class": "unclassified",
+      "target_name": "pre-commit hook repository github.com/widgetworks-example/storefront-hooks"
+    }
+  }
+}
